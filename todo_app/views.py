@@ -48,7 +48,7 @@ def SignUp(request):
 
         myuser=User.objects.create_user(get_name,get_email,get_password)
         myuser.save()
-        messages.success(request,"User is creaated please Log In!")        
+        messages.success(request,"User is created please Log In!")        
         return redirect("/LogIn/")
     return render(request,'SignUp.html')
 
