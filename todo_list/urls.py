@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('/var/task/admin/', admin.site.urls),  
+    path('var/task/admin/', admin.site.urls),  
     path('', include('todo_app.urls')),
 ]
 
