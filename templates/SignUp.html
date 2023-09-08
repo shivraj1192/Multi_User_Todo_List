@@ -1,0 +1,281 @@
+{% extends 'base.html' %}
+
+{% block style %}
+
+<style>
+  @media (max-width: 950px) 
+  {
+    .navbar-nav 
+    {
+      
+      margin-left: 20px !important;
+    }
+  }
+  .navbar-brand img
+      {
+          width: 90px;
+          height: auto;
+          margin-left: 50px;
+      }
+
+    .navbar-nav
+    {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 900px;
+    }
+
+    .navbar-nav a {
+      
+      text-decoration: none;
+      color: #333; 
+      padding: 5px 20px;
+      transition: all 0.3s ease; 
+      margin-right: 55px;
+    }
+    
+    .navbar-nav a:hover {
+      background: #000000;
+      color: white;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
+      transform: scale(1.05); 
+    }
+
+
+
+
+    body
+    {
+      background: linear-gradient(45deg, #f3f5f6, #1f89e5, #f1f2f3, #1f89e5, #edf0f0, #1f89e5, #e7eced);
+    }
+
+    .navbar-brand img
+        {
+            width: 90px;
+            height: auto;
+        }
+    
+
+    
+    .rounded-lg {
+      border-radius: 200px;
+      background: rgba(8, 72, 109, 0.297);
+      border-color: #1df2ee00;
+      
+    }
+
+
+    .form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.title {
+  font-size: 28px;
+  color: royalblue;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.title::before,.title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: royalblue;
+}
+
+.title::before {
+  width: 18px;
+  height: 18px;
+  background-color: royalblue;
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.message, .signin {
+  color: rgba(88, 87, 87, 0.822);
+  font-size: 14px;
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a {
+  color: royalblue;
+}
+
+.signin a:hover {
+  text-decoration: underline royalblue;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.form label {
+  position: relative;
+}
+
+.form label .input {
+  width: 100%;
+  padding: 10px 10px 20px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+.form label .input + span {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  color: grey;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.form label .input:placeholder-shown + span {
+  top: 15px;
+  font-size: 0.9em;
+}
+
+.form label .input:focus + span,.form label .input:valid + span {
+  top: 30px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.form label .input:valid + span {
+  color: green;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  background-color: royalblue;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+}
+
+.submit:hover {
+  background-color: rgb(56, 90, 194);
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+</style>
+  
+
+  
+  
+ 
+
+{% endblock style %}
+
+
+
+
+{% block body %}
+
+<div class="container" >
+    <div class="container" >
+      <br>
+      <br>
+      
+      
+  
+      <div class="row">
+        <div class="col-md-4">
+        </div>
+          <div class="col-md-4">
+
+
+            <form class="form" action="/SignUp/" method="post">{% csrf_token %}
+            {% for message in messages %}
+                <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                  <strong> {{message}} </strong> 
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+              <p class="title">Register </p>
+              <p class="message">Signup now and get full access to our app. </p>
+               
+                      
+              <label>
+                  <input required="" placeholder="" type="text" class="input" name="name" >
+                  <span>Username</span>
+              </label> 
+                  
+              <label>
+                  <input required="" placeholder="" type="email" class="input" name="email">
+                  <span>Email</span>
+              </label> 
+                  
+              <label>
+                  <input required="" placeholder="" type="password" class="input" name="pass1">
+                  <span>Password</span>
+              </label>
+              <label>
+                  <input required="" placeholder="" type="password" class="input" name="pass2">
+                  <span>Confirm password</span>
+              </label>
+              <button class="submit">Submit</button>
+              <p class="signin">Already have an acount ? <a href="/LogIn/">Login</a> </p>
+          </form>
+
+            
+              
+  
+          </div>
+        <div class="col-md-4"></div>
+      </div>
+      
+      <br>
+      <br>
+      <br>
+      
+    </div>
+  </div>
+{% endblock body %}
+
+
+
+
+
+{% block script %}
+
+{% endblock script %}

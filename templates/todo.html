@@ -1,0 +1,604 @@
+{% extends 'base.html' %}
+
+{% block style %}
+
+
+<style>
+
+  @media (max-width: 950px) 
+{
+  .navbar-nav 
+  {
+    margin-left: 20px !important;
+  }
+
+  .todo-container
+  {
+    display: flex;
+    flex-direction: column;
+  }
+
+  
+
+
+
+
+}
+
+  .navbar
+  {
+    background: rgb(239, 239, 239);
+  }
+
+    .navbar-brand img
+        {
+            width: 90px;
+            height: auto;
+            margin-left: 50px;
+        }
+
+      .navbar-nav
+      {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        margin-left: 400px;
+      }
+
+      .navbar-nav a {
+  
+  text-decoration: none;
+  color: #333; 
+  padding: 5px 20px;
+  transition: all 0.3s ease; 
+  margin-right: 55px;
+}
+
+.navbar-nav a:hover {
+  background: #000000;
+  color: white;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
+  transform: scale(1.05); 
+}
+
+
+      
+.todo-container
+{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 45px 0px ;
+}
+
+/* ######################################################### Form ################################################3 */
+
+.form-container {
+    width: 400px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 2px solid black;
+    padding: 32px 24px;
+    font-size: 14px;
+    font-family: inherit;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    
+  }
+  
+  .form-container button:active {
+    scale: 0.95;
+  }
+  
+  .form-container .form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-container .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .form-container .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #717171;
+    font-weight: 600;
+    font-size: 12px;
+  }
+  
+  .form-container .form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: #000000;
+    font-family: inherit;
+    background-color: transparent;
+    border: 1px solid #414141;
+  }
+  
+  .form-container .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    resize: none;
+    color: #fff;
+    height: 96px;
+    border: 1px solid #414141;
+    background-color: transparent;
+    font-family: inherit;
+  }
+  
+  .form-container .form-group input::placeholder {
+    opacity: 0.5;
+  }
+  
+  .form-container .form-group input:focus {
+    outline: none;
+    border-color: #e81cff;
+  }
+  
+  .form-container .form-group textarea:focus {
+    outline: none;
+    border-color: #e81cff;
+  }
+  
+  
+  .button {
+    position: relative;
+    width: 120px;
+    height: 40px;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    border: none;
+    padding: 12px;
+    gap: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: -4px;
+    top: -1px;
+    margin: auto;
+    width: 128px;
+    height: 48px;
+    border-radius: 10px;
+    background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100% );
+    z-index: -10;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .button::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
+    transform: translate3d(0, 0, 0) scale(0.95);
+    filter: blur(20px);
+  }
+  
+  .button:hover::after {
+    filter: blur(30px);
+  }
+  
+  .button:hover::before {
+    transform: rotate(-180deg);
+  }
+  
+  .button:active::before {
+    scale: 0.7;
+  }
+  
+  
+
+  #status {
+    height: 45px;
+    border: none;
+    background: #41414100;
+    border: 1px solid black;
+    border-radius: 7px;
+}
+  #priority {
+    height: 45px;
+    border: none;
+    background: #41414100;
+    border: 1px solid black;
+    border-radius: 7px;
+}
+
+.name {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+}
+
+
+
+
+
+
+  /* ########################################## todo table ############################################ */
+  
+  .todo-list {
+        border-collapse: separate;
+        border-spacing: 10px; /* Adjust the spacing as needed */
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(10px);
+        /* border: 2px solid black; */
+        border-radius: 15px;
+    }
+
+  .table {
+        border-collapse: separate;
+        border-spacing: 10px; /* Adjust the spacing as needed */
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+    }
+
+
+
+
+
+
+
+    .designbox1
+{
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(
+    #764ada,
+    #6deefc
+  );
+  border-radius: 50%;
+  animation: float1 40s infinite;
+  box-shadow: 0 0 50px #764ada ;
+  filter: blur(2px);
+  z-index: -50;
+  
+}
+
+@keyframes float1 
+{
+  0%
+  {
+    transform: translate(700px,-50px);
+  }
+  25%
+  {
+    transform: translate(20px,20px);
+  }
+  50%
+  {
+    transform: translate(-50px,50px);
+  }
+  75%
+  {
+    transform: translate(30px,-60px);
+  }
+  100%
+  {
+    transform: translate(700px,-50px);
+  }
+  
+}
+
+.designbox2
+{
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(
+    #b44ada,
+    #6deefc
+  );
+  border-radius: 50%;
+  margin-bottom: 400px;
+  animation: float2 60s infinite;
+  box-shadow: 0 0 50px #b44ada ;
+  filter: blur(2px);
+  z-index: -50;
+  transform: translate(0px,0px);
+  
+}
+
+@keyframes float2
+{
+  0%
+  {
+    transform: translate(0px,0px);
+  }
+  25%
+  {
+    transform: translate(450px,300px);
+  }
+  50%
+  {
+    transform: translate(-100px,450px);
+  }
+  75%
+  {
+    transform: translate(-250px,-150px);
+  }
+  100%
+  {
+    transform: translate(0px,0px);
+  }
+  
+}
+
+.designbox3
+{
+  position: absolute;
+  width: 125px;
+  height: 125px;
+  background: linear-gradient(
+    #764ada,
+    #fc6de9
+  );
+  
+  border-radius: 50%;
+  animation: float3 80s infinite;
+  z-index: -50;
+  filter: blur(2px);
+  /* transform: translate(600px,-500px); */
+  
+}
+
+@keyframes float3
+{
+  0%
+  {
+    transform: translate(-650px,400px);
+  }
+  25%
+  {
+    transform: translate(-450px,80px);
+    
+  }
+  50%
+  {
+
+    transform: translate(550px,300px);
+    
+  }
+  75%
+  {
+    transform: translate(600px,-500px);
+    
+    
+  }
+  100%
+  {
+    transform: translate(-650px,400px);
+    
+  }
+  
+}
+
+.designbox4
+{
+  position: absolute;
+  width: 85px;
+  height: 85px;
+  background: linear-gradient(
+    #764ada,
+    #6deefc
+  );
+  border-radius: 50%;
+  animation: float4 100s infinite;
+  filter: blur(2px);
+  transform: translate(0px,0px);
+  z-index: -50;
+  
+}
+
+@keyframes float4
+{
+  0%
+  {
+    transform: translate(500px,50px);
+  }
+  25%
+  {
+    transform: translate(500px,-500px);
+  }
+  50%
+  {
+    transform: translate(600px,-200px);
+  }
+  75%
+  {
+    transform: translate(450px,300px);
+  }
+  100%
+  {
+    transform: translate(500px,50px);
+  }
+  
+}
+
+
+.status a
+{
+  text-decoration: none;
+}
+
+
+.form h3
+{
+  color: black;
+}
+
+  
+
+
+  
+  
+  </style>
+
+
+
+    
+
+{% endblock style %}
+
+
+
+
+{% block body %}
+
+
+
+
+{% for message in messages %}
+                    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                      <strong> {{message}} </strong> 
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+{% endfor %}
+
+<div class="name">
+{% if request.user.is_authenticated %}
+    welcome @{{ user.username }}
+{% else %}
+    
+{% endif %}
+</div>
+<div class="designbox1"></div>
+
+<div class="todo-container">
+  <div class="designbox3"></div>                  
+<div class="form-container" style="overflow-x: auto;">
+    <form class="form" action="/AddTodo/" method="post">{% csrf_token %}
+      <h3>Add Task Here.....</h3>
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" id="title" name="title" required="">
+      </div>
+      <div class="form-group">
+        <label>Status Choice</label>
+        <select id="status" name="status">
+            <option value="None">None</option>
+            <option value="Completed">Completed</option>
+            <option value="Pending">Pending</option>
+          </select>
+      </div>
+      <div class="form-group">
+        <label>Priority Choice</label>
+        <select id="priority" name="priority">
+            <option value="None">None</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+      </div>
+      <div class="form-group">
+        <label>Due-Date</label>
+        
+        <input type="datetime-local" id="date" name="startdate" required=""  placeholder="star-tdate"><br>
+        <input type="datetime-local" id="date" name="enddate" required="" placeholder="end-date">
+    </div>
+    
+      
+      <button class="button">
+        ADD
+      </button>
+    </form>
+  </div>
+
+
+ 
+
+
+
+<!-- ###################################3 todo table ########################################################## -->
+
+<div class="todo-list">
+    
+    
+    <table class="table">
+      <div class="designbox4"></div>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Priority</th>
+                <th>Due-Date</th>
+                <th>Delete</th>
+                <th>Edit</th>
+                
+                
+              </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for todo in todos %}
+              <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{todo.title}}</td>
+                {% if todo.status == "Completed" %}
+    <td style="color: green;">{{ todo.status }}</td>
+{% else %}
+    <td style="color: orange;">{{ todo.status }}</td>
+{% endif %}
+                <td>{{todo.date}}</td>
+                <td>{{todo.priority}}</td>
+                
+                <td>{{ todo.duedate_start|date:"Y-m-d H:i" }} - {{ todo.duedate_end|date:"Y-m-d H:i" }}</td>
+                <td><a href="/Delete_Todo/{{todo.id}}" class="btn btn-danger">🗑️</a></td>
+                <td class="status">
+                  
+                  {% if todo.status == 'Completed' %}
+                  <a href="/Edit_status/{{todo.id}}/Pending">⌛</a>
+                  {% else %}
+                  <a href="/Edit_status/{{todo.id}}/Completed">✅</a>
+                  {% endif %}
+                  
+                </td>
+
+              </tr>
+              
+            {% endfor %}
+        </tbody>
+        <div class="designbox2"></div>
+      </table>
+      
+    
+{% endblock body %}
+
+
+
+
+
+{% block script %}
+
+
+{% endblock script %}
