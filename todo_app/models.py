@@ -18,7 +18,7 @@ class Todo(models.Model):
         ('9', '9️⃣'),
         ('10', '🔟'),
     ]
-    title=models.CharField(max_length=25)
+    title=models.CharField(max_length=105)
     status=models.CharField(max_length=10 , choices=status_choice)
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     date=models.DateTimeField(auto_now_add=True)
