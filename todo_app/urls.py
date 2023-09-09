@@ -3,7 +3,7 @@ from django.urls import path, include
 from todo_app import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls), 
+    path('admin/', admin.site.urls, name='admin'), 
     path('', views.home , name='home'),
 
     path('todo/', views.todo , name='todo'),
