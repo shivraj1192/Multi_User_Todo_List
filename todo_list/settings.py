@@ -82,28 +82,28 @@ WSGI_APPLICATION = 'todo_list.wsgi.application'
 # }
 
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "tododb",
-#         "USER": "shivraj1192",
-#         "PASSWORD": "Shivraj@1192",
-#         "HOST": "127.0.0.1",
-#         "PORT": "5432",
-#     }
-# }
-
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': '6aQmtx3G2LrPbJqAkhiH',
-        'HOST': 'containers-us-west-140.railway.app',
-        'PORT': '6326',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "tododb",
+        "USER": "shivraj1192",
+        "PASSWORD": "Shivraj@1192",
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': '6aQmtx3G2LrPbJqAkhiH',
+#         'HOST': 'containers-us-west-140.railway.app',
+#         'PORT': '6326',
+#     }
+# }
 
 
 # Password validation
