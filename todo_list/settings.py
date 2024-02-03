@@ -99,11 +99,35 @@ DATABASES = {
 #         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME': 'railway',
 #         'USER': 'postgres',
-#         'PASSWORD': '6aQmtx3G2LrPbJqAkhiH',
-#         'HOST': 'containers-us-west-140.railway.app',
-#         'PORT': '6326',
+#         'PASSWORD': 'g-6e*bC641fBAfc3b3Gb262F12d4g-4b',
+#         'HOST': 'viaduct.proxy.rlwy.net',
+#         'PORT': '57034',
 #     }
 # }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': 'dAg*-6db5AegGdgAEC*dF54Cc63G116F',
+#         'HOST': 'roundhouse.proxy.rlwy.net',
+#         'PORT': '14809',
+#     }
+# }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'todo_list_eebr',
+#         'USER': 'shivraj1192',
+#         'PASSWORD': 'z0na0AN1LliDMkmz7x4jhxh0ieHDIGfM',
+#         'HOST': '192.168.1.1',
+#         'PORT': '5432',
+#     }
+# }
+
 
 
 # Password validation
