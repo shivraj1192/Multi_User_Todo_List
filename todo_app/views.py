@@ -25,49 +25,49 @@ def todo(request):
 
 
 def SignUp(request):
-    if request.method=="POST":
-        get_name= request.POST.get('name')
-        get_email= request.POST.get('email')
-        get_password= request.POST.get('pass1')
-        get_confirm_password= request.POST.get('pass2')
-        if get_password == get_confirm_password:
-            pass
-        else:
-            messages.info(request,'password is not matching')
-            return redirect("/SignUp/")
+    # if request.method=="POST":
+    #     get_name= request.POST.get('name')
+    #     get_email= request.POST.get('email')
+    #     get_password= request.POST.get('pass1')
+    #     get_confirm_password= request.POST.get('pass2')
+    #     if get_password == get_confirm_password:
+    #         pass
+    #     else:
+    #         messages.info(request,'password is not matching')
+    #         return redirect("/SignUp/")
         
-        try:
-            if User.objects.get(username=get_name):
-                messages.warning(request,"This username is already in use!")
-                return redirect("/SignUp/")
-            if User.objects.get(email=get_email):
-                messages.warning(request,"This email is already in use!")
-                return redirect("/SignUp/")
-        except Exception as identifier:
-            pass
+    #     try:
+    #         if User.objects.get(username=get_name):
+    #             messages.warning(request,"This username is already in use!")
+    #             return redirect("/SignUp/")
+    #         if User.objects.get(email=get_email):
+    #             messages.warning(request,"This email is already in use!")
+    #             return redirect("/SignUp/")
+    #     except Exception as identifier:
+    #         pass
 
-        myuser=User.objects.create_user(get_name,get_email,get_password)
-        myuser.save()
-        messages.success(request,"User is created please Log In!")        
-        return redirect("/LogIn/")
+    #     myuser=User.objects.create_user(get_name,get_email,get_password)
+    #     myuser.save()
+    #     messages.success(request,"User is created please Log In!")        
+    #     return redirect("/LogIn/")
     return render(request,'SignUp.html')
 
 
 
 
 def handleLogin(request):
-    if request.method=="POST":
-        get_name= request.POST.get('name')
-        get_password= request.POST.get('pass1')
-        myuser= authenticate(username=get_name,password=get_password)
+    # if request.method=="POST":
+    #     get_name= request.POST.get('name')
+    #     get_password= request.POST.get('pass1')
+    #     myuser= authenticate(username=get_name,password=get_password)
 
-        if myuser is not None:
-            login(request,myuser) 
-            messages.success(request,"Successfully LogIn")
-            return redirect("/todo/")
-        else:
-            messages.error(request,"Invalid Credentials")
-            return redirect("/LogIn/")
+    #     if myuser is not None:
+    #         login(request,myuser) 
+    #         messages.success(request,"Successfully LogIn")
+    #         return redirect("/todo/")
+    #     else:
+    #         messages.error(request,"Invalid Credentials")
+    #         return redirect("/LogIn/")
     return render(request,'LogIn.html')
 
 
