@@ -271,7 +271,8 @@
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                   {% endfor %}
-                  <form class="form" action="/LogIn/" method="post">{% csrf_token %}
+                  {% comment %} <form class="form" action="/LogIn/" method="post">{% csrf_token %} {% endcomment %}
+                  <form class="form" action="/LogIn/" method="post">
                       <div class="input-group">
                           <label for="email">Username</label>
                           <input type="text" name="name" id="email" placeholder="" required>
