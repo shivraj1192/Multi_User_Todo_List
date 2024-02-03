@@ -87,11 +87,22 @@ def handleLogout(request):
 
 
 def AddTodo(request):
-    if request.user.is_authenticated:
-        user = request.user
-        print(user)
+    # if request.user.is_authenticated:
+    #     user = request.user
+    #     print(user)
 
-        if request.method=="POST":
+    #     if request.method=="POST":
+    #         get_title= request.POST.get('title')
+    #         get_status= request.POST.get('status')
+    #         get_priority= request.POST.get('priority')
+    #         duedate_start = request.POST.get('startdate')
+    #         duedate_end = request.POST.get('enddate')
+
+    #         mytodo = Todo(title=get_title, status=get_status, priority=get_priority, user=user , duedate_start = duedate_start, duedate_end = duedate_end)
+    #         mytodo.save()
+    #         print(mytodo)
+    #     return redirect('/todo/')
+    if request.method=="POST":
             get_title= request.POST.get('title')
             get_status= request.POST.get('status')
             get_priority= request.POST.get('priority')
@@ -101,7 +112,7 @@ def AddTodo(request):
             mytodo = Todo(title=get_title, status=get_status, priority=get_priority, user=user , duedate_start = duedate_start, duedate_end = duedate_end)
             mytodo.save()
             print(mytodo)
-        return redirect('/todo/')
+    return redirect('/todo/')
     
 
 
