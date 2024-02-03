@@ -24,11 +24,4 @@ urlpatterns = [
 
     path('Edit_status/<int:id>/<str:status>', views.Edit_status , name='Edit_status'),
 
-
-
-    
-
-    
-
-
 ]
