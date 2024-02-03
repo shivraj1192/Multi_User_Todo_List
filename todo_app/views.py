@@ -17,9 +17,14 @@ def todo(request):
     #     context = {
     #         'todos' : todos
     #     }
-    return render(request, "todo.html")
+    #     return render(request, "todo.html" , context = context)
     # else:
     #     return render(request,'LogIn.html')
+
+        context = {
+                'todos' : todos
+            }
+        return render(request, "todo.html" , context = context)
     
 
 
