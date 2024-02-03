@@ -109,7 +109,7 @@ def AddTodo(request):
             duedate_start = request.POST.get('startdate')
             duedate_end = request.POST.get('enddate')
 
-            mytodo = Todo(title=get_title, status=get_status, priority=get_priority, user=user , duedate_start = duedate_start, duedate_end = duedate_end)
+            mytodo = Todo(title=get_title, status=get_status, priority=get_priority, duedate_start = duedate_start, duedate_end = duedate_end)
             mytodo.save()
             print(mytodo)
     return redirect('/todo/')
