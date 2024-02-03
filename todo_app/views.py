@@ -20,11 +20,11 @@ def todo(request):
     #     return render(request, "todo.html" , context = context)
     # else:
     #     return render(request,'LogIn.html')
-        todos = Todo.objects.filter(user = None).order_by('priority')
-        context = {
-                'todos' : todos
-            }
-        return render(request, "todo.html" , context = context)
+    todos = Todo.objects.filter(user = None).order_by('priority')
+    context = {
+            'todos' : todos
+        }
+    return render(request, "todo.html" , context = context)
     
 
 
