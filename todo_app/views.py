@@ -11,15 +11,15 @@ def home(request):
 
 
 def todo(request):
-    if request.user.is_authenticated:
-        user = request.user
-        todos = Todo.objects.filter(user = user).order_by('priority')
-        context = {
-            'todos' : todos
-        }
-        return render(request, "todo.html" , context = context)
-    else:
-        return render(request,'LogIn.html')
+    # if request.user.is_authenticated:
+    #     user = request.user
+    #     todos = Todo.objects.filter(user = user).order_by('priority')
+    #     context = {
+    #         'todos' : todos
+    #     }
+    return render(request, "todo.html" , context = context)
+    # else:
+    #     return render(request,'LogIn.html')
     
 
 
